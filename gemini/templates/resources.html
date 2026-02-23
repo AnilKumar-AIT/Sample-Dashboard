@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-5xl mx-auto stagger-fade-in">
+    <div class="mb-12">
+        <h2 class="text-4xl font-black text-gray-900">Clinical Resources</h2>
+        <p class="text-gray-500 mt-2">Whitepapers and research on neuro-muscular gait analysis.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="health-card">
+            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-2xl mb-6">📄</div>
+            <h4 class="text-xl font-bold mb-2">The Cerebellum & Balance</h4>
+            <p class="text-sm text-gray-500 leading-relaxed mb-6">A deep dive into how neural latency affects propulsion angles in seniors over 70.</p>
+            <a href="#" class="text-amber-gold font-bold text-sm hover:underline">Download PDF (2.4MB) →</a>
+        </div>
+
+        <div class="health-card">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mb-6">📊</div>
+            <h4 class="text-xl font-bold mb-2">Fall Risk Benchmarks</h4>
+            <p class="text-sm text-gray-500 leading-relaxed mb-6">Comparative data showing national averages for stride symmetry and recovery rates.</p>
+            <a href="#" class="text-amber-gold font-bold text-sm hover:underline">View Clinical Data →</a>
+        </div>
+
+        <div class="md:col-span-2 health-card bg-gray-900 text-white border-none">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="flex-1">
+                    <h4 class="text-2xl font-bold mb-4">Corrective Exercise Library</h4>
+                    <p class="text-gray-400 text-sm mb-6">Access our full suite of 4K instructional videos for lateral hip stability and ankle mobility.</p>
+                    <button class="btn-premium">Browse Video Vault</button>
+                </div>
+                <div class="w-full md:w-64 h-40 bg-gray-800 rounded-2xl flex items-center justify-center italic text-gray-600">
+                    Video Preview
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

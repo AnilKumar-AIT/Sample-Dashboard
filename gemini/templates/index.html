@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block auth %}
+<div class="min-h-screen bg-white">
+    <header class="max-w-7xl mx-auto px-10 py-6 flex justify-between items-center">
+        <h1 class="text-2xl font-black italic">FALL<span class="text-amber-gold">VISION</span></h1>
+        <div class="space-x-8">
+            <a href="/auth" class="text-sm font-bold text-gray-900">Login</a>
+            <a href="/auth" class="bg-black text-white px-6 py-3 rounded-full text-sm font-bold">Get Started</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-10 py-24 grid lg:grid-cols-2 gap-20 items-center">
+        <div>
+            <span class="bg-amber-100 text-amber-700 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Healthcare Evolution 2026</span>
+            <h2 class="text-7xl font-black leading-tight mt-6 tracking-tighter">Your Gait is your <span class="text-amber-gold underline">Brain's</span> Signature.</h2>
+            <p class="mt-8 text-xl text-gray-500 leading-relaxed max-w-lg">
+                FallVision uses advanced neuro-movement tracking to predict fall risks before they happen. Premium wellness monitoring for the modern elder.
+            </p>
+            <div class="mt-12 flex space-x-4">
+                <a href="/auth" class="bg-amber-gold text-white px-10 py-5 rounded-2xl font-bold shadow-2xl shadow-amber-200 text-lg">Join the Platform</a>
+                <a href="#" class="border border-gray-200 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-50">View Demo</a>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="absolute -top-10 -left-10 w-64 h-64 bg-amber-50 rounded-full blur-3xl opacity-50"></div>
+            <div class="bg-gray-100 rounded-[3rem] p-4 shadow-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" class="rounded-[2.5rem] grayscale hover:grayscale-0 transition-all duration-700" alt="Healthcare Dashboard">
+            </div>
+        </div>
+    </main>
+
+    <section class="bg-gray-50 py-24">
+        <div class="max-w-7xl mx-auto px-10 grid md:grid-cols-3 gap-12">
+            <div class="bg-white p-10 rounded-3xl shadow-sm">
+                <div class="text-3xl mb-4">🧠</div>
+                <h4 class="font-bold text-xl mb-4">Neural Analytics</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Monitor how your brain coordinates limb movements in real-time using IoT gait sensors.</p>
+            </div>
+            <div class="bg-white p-10 rounded-3xl shadow-sm">
+                <div class="text-3xl mb-4">🛡️</div>
+                <h4 class="font-bold text-xl mb-4">Risk Mitigation</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Predictive alerts sent to caregivers when gait patterns deviate from clinical baseline.</p>
+            </div>
+            <div class="bg-white p-10 rounded-3xl shadow-sm">
+                <div class="text-3xl mb-4">📈</div>
+                <h4 class="font-bold text-xl mb-4">Recovery Tracking</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Visualize long-term mobility health with Whoop-style recovery and strain scores.</p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

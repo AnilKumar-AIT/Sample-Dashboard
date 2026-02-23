@@ -1,0 +1,92 @@
+{% if user %}
+{% include 'base.html' %}
+{% else %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+{% endif %}
+
+<div class="content">
+
+<h2>Support Center</h2>
+<p style="color:gray; margin-bottom:30px;">
+FallVision clinical assistance & technical support portal.
+</p>
+
+<div class="kpi-grid">
+
+    <div class="kpi-card">
+        <h4>24/7 Monitoring Line</h4>
+        <div class="kpi-value kpi-success">+1-800-FALL-AI</div>
+        <p>Emergency fall-risk response team</p>
+    </div>
+
+    <div class="kpi-card">
+        <h4>Email Support</h4>
+        <div class="kpi-value kpi-warning">support@fallvision.ai</div>
+        <p>Response within 4 business hours</p>
+    </div>
+
+    <div class="kpi-card">
+        <h4>System Status</h4>
+        <div class="kpi-value kpi-success">Operational</div>
+        <p>All monitoring services active</p>
+    </div>
+
+</div>
+
+<!-- CONTACT FORM -->
+<div class="chart-card" style="margin-top:40px;">
+
+    <h3>Submit a Support Request</h3>
+
+    {% if message_sent %}
+        <div class="insight-box" style="background:#e8f5e9;">
+            ✅ Your message has been received. Our healthcare analytics team will contact you shortly.
+        </div>
+    {% endif %}
+
+    <form method="POST" style="margin-top:20px;">
+
+        <label>Name</label><br>
+        <input type="text" name="name" required
+            style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd; border-radius:6px;">
+
+        <label>Email</label><br>
+        <input type="email" name="email" required
+            style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd; border-radius:6px;">
+
+        <label>Message</label><br>
+        <textarea name="message" rows="5" required
+            style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd; border-radius:6px;"></textarea>
+
+        <button class="btn-primary">Submit Request</button>
+
+    </form>
+</div>
+
+<!-- ADDITIONAL HELP -->
+<div class="chart-card">
+    <h3>Clinical Assistance Resources</h3>
+    <ul>
+        <li>Mobility rehabilitation consultation</li>
+        <li>Fall prevention education materials</li>
+        <li>Caregiver onboarding support</li>
+        <li>Device setup & integration help</li>
+    </ul>
+</div>
+
+<div class="insight-box">
+FallVision integrates neural-motor monitoring models inspired by contemporary geriatric mobility research.
+If experiencing immediate fall injury risk, contact emergency services immediately.
+</div>
+
+</div>
+
+{% if not user %}
+</body>
+</html>
+{% endif %}

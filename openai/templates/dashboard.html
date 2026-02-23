@@ -1,0 +1,92 @@
+{% include 'base.html' %}
+
+<div class="content">
+
+<h2>Mobility Intelligence Overview</h2>
+<p style="margin-bottom:25px; color:gray;">
+Real-time limb angle monitoring integrated with neural-motor efficiency simulation.
+</p>
+
+<div class="kpi-grid">
+
+    <div class="kpi-card">
+        <h4>Mobility Score</h4>
+        <div class="kpi-value kpi-success">{{ score }}%</div>
+        <p>Overall biomechanical efficiency</p>
+    </div>
+
+    <div class="kpi-card">
+        <h4>Fall Risk Level</h4>
+        <div class="kpi-value 
+            {% if risk == 'Low' %}kpi-success
+            {% elif risk == 'Moderate' %}kpi-warning
+            {% else %}kpi-danger{% endif %}">
+            {{ risk }}
+        </div>
+        <p>AI-based predictive assessment</p>
+    </div>
+
+    <div class="kpi-card">
+        <h4>Brain-Motor Correlation</h4>
+        <div class="kpi-value kpi-warning">{{ brain }}</div>
+        <p>Neural activation efficiency</p>
+    </div>
+
+    <div class="kpi-card">
+        <h4>Posture Stability</h4>
+        <div class="kpi-value kpi-success">
+            {{ angles.right_arm + angles.left_arm + angles.right_leg + angles.left_leg // 4 }}°
+        </div>
+        <p>Average limb alignment</p>
+    </div>
+
+</div>
+
+<div class="chart-card">
+    <h3>Limb Movement Distribution</h3>
+    <canvas id="movementChart"></canvas>
+</div>
+
+<div class="chart-card">
+    <h3>Mobility Trend (Last 7 Days)</h3>
+    <canvas id="trendChart"></canvas>
+</div>
+
+<div class="insight-box">
+    <strong>Clinical Insight:</strong><br><br>
+    Efficient movement requires synchronized neural activation between motor cortex regions 
+    and peripheral limb response. Reduced angle variability combined with declining brain-motor 
+    correlation increases fall probability in elderly individuals. FallVision continuously 
+    evaluates these signals to provide proactive risk mitigation recommendations.
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+new Chart(document.getElementById('movementChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Right Arm','Left Arm','Right Leg','Left Leg'],
+        datasets: [{
+            label: 'Angle (degrees)',
+            data: [{{ angles.right_arm }}, {{ angles.left_arm }}, {{ angles.right_leg }}, {{ angles.left_leg }}],
+            backgroundColor: '#FFC107'
+        }]
+    }
+});
+
+new Chart(document.getElementById('trendChart'), {
+    type: 'line',
+    data: {
+        labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+        datasets: [{
+            label: 'Mobility Score',
+            data: [72, 75, 70, 78, 74, 76, {{ score }}],
+            borderColor: '#E0A800',
+            fill: false
+        }]
+    }
+});
+</script>

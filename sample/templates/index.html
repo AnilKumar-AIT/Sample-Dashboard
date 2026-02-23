@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <i data-feather="activity"></i> FallVision
+            </div>
+            <div class="nav-links">
+                <a href="#">Features</a>
+                <a href="#">Guardians</a>
+                <a href="#">Support</a>
+                <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container hero-content">
+        <h1>Your Partner in Healthy Aging. Maintain Independence, Stay Connected, Live Fully</h1>
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">Learn More</a>
+            <a href="#" class="btn btn-outline">Download App</a>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2>How It Works</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <i data-feather="smartphone"></i>
+                </div>
+                <h3>Intelligent Monitoring</h3>
+                <p>Learn your routines and detect anomalies instantly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <i data-feather="users"></i>
+                </div>
+                <h3>Instant Guardian Alerts</h3>
+                <p>Keep your family and caregivers connected in real-time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <i data-feather="shield"></i>
+                </div>
+                <h3>Peace of Mind</h3>
+                <p>Freedom to live independently with secure protection.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials">
+    <div class="container">
+        <h2>Testimonials</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="avatar"></div>
+                <h3>Fort En. Maly</h3>
+                <p>"Truly amazing peace of mind for my family."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="avatar"></div>
+                <h3>Hemis En Aigins</h3>
+                <p>"The best investment for my parents' safety."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="avatar"></div>
+                <h3>Nowr Siro Soaad</h3>
+                <p>"Easy to use and very reliable service."</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

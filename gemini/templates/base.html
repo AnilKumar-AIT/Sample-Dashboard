@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FallVision | Premium Neuro-Gait Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .sidebar-active { 
+            background: #FFFBEB; 
+            border-right: 4px solid #D97706; 
+            color: #92400E !important; 
+        }
+    </style>
+</head>
+<body class="bg-[#F9FAFB]">
+    {% if session.user %}
+    <div class="flex h-screen overflow-hidden">
+        
+        <aside class="w-72 bg-white border-r border-gray-100 flex flex-col justify-between shadow-sm z-50">
+            <div class="p-8">
+                <a href="{{ url_for('dashboard') }}" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-[#D97706] rounded-lg"></div>
+                    <h1 class="text-xl font-extrabold tracking-tight">FALL<span class="text-[#D97706]">VISION</span></h1>
+                </a>
+
+                <nav class="mt-12 space-y-2">
+                    <a href="{{ url_for('dashboard') }}" 
+                       class="flex items-center space-x-3 p-3 rounded-xl transition-all {{ 'sidebar-active' if request.path == '/dashboard' else 'text-gray-500 hover:bg-gray-50' }}">
+                        <span class="text-lg">📈</span><span class="font-semibold">Analytics</span>
+                    </a>
+                    
+                    <a href="{{ url_for('detection') }}" 
+                       class="flex items-center space-x-3 p-3 rounded-xl transition-all {{ 'sidebar-active' if request.path == '/detection' else 'text-gray-500 hover:bg-gray-50' }}">
+                        <span class="text-lg">🦴</span><span class="font-semibold">Live Detection</span>
+                    </a>
+                    
+                    <a href="{{ url_for('records') }}" 
+                       class="flex items-center space-x-3 p-3 rounded-xl transition-all {{ 'sidebar-active' if request.path == '/records' else 'text-gray-500 hover:bg-gray-50' }}">
+                        <span class="text-lg">📋</span><span class="font-semibold">Past Records</span>
+                    </a>
+                    
+                    <a href="{{ url_for('emergency') }}" 
+                       class="flex items-center space-x-3 p-3 rounded-xl transition-all {{ 'sidebar-active' if request.path == '/emergency' else 'text-red-500 hover:bg-red-50' }}">
+                        <span class="text-lg">🆘</span><span class="font-semibold">Emergency Hub</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="p-6 border-t border-gray-50 bg-gray-50/50">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 font-bold border border-amber-200">
+                        {{ session.user.name[0] }}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-gray-900 truncate">{{ session.user.name }}</p>
+                        <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">{{ session.user.role }}</p>
+                    </div>
+                    <a href="{{ url_for('logout') }}" class="text-gray-400 hover:text-red-500 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto">
+            
+            <header class="h-20 bg-white/80 backdrop-blur-md border-b border-gray-100 flex items-center justify-between px-10 sticky top-0 z-40">
+                <div class="flex space-x-8 text-sm font-semibold text-gray-400">
+                    <a href="{{ url_for('resources') }}" class="hover:text-[#D97706] transition-colors {{ 'text-[#D97706]' if request.path == '/resources' }}">Resources</a>
+                    <a href="{{ url_for('faq') }}" class="hover:text-[#D97706] transition-colors {{ 'text-[#D97706]' if request.path == '/faq' }}">FAQ</a>
+                    <a href="{{ url_for('services') }}" class="hover:text-[#D97706] transition-colors {{ 'text-[#D97706]' if request.path == '/services' }}">Support</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="flex flex-col items-end">
+                        <span class="text-[10px] uppercase font-black tracking-widest text-gray-400">Network Status</span>
+                        <div class="flex items-center space-x-2">
+                            <span class="flex h-2 w-2 rounded-full bg-green-500"></span>
+                            <span class="text-xs font-bold text-gray-600">Secure Sync Active</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="p-10">
+                {% block content %}{% endblock %}
+            </div>
+            
+        </main>
+    </div>
+    {% else %}
+        {% block auth %}{% endblock %}
+        {% block public_content %}{% endblock %}
+    {% endif %}
+    
+    <script>
+        // Smooth fade-in for page content
+        document.addEventListener('DOMContentLoaded', () => {
+            const main = document.querySelector('main');
+            if(main) main.classList.add('stagger-fade-in');
+        });
+    </script>
+</body>
+</html>

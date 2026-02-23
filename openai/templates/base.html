@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FallVision</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<!-- TOP NAVBAR -->
+<div class="navbar">
+    <h2>FallVision</h2>
+    <div class="nav-links">
+        <a href="/dashboard">Home</a>
+        <a href="/faq">FAQ</a>
+        <a href="/support">Support</a>
+        <a href="/resources">Resources</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/detection">Detection</a>
+        <a href="/past-records">Past Records</a>
+        <a href="/emergency">Emergency Hub</a>
+        <a href="/trends">Trends</a>
+    </div>
+
+    <div class="profile-box">
+        <strong>{{ user }}</strong>
+        <p>{{ role }}</p>
+        <p>⚙ Settings</p>
+    </div>
+</div>

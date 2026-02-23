@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-6xl mx-auto stagger-fade-in">
+    <div class="mb-12">
+        <h2 class="text-4xl font-black text-gray-900">Concierge Services</h2>
+        <p class="text-gray-500 mt-2">Technical support and professional wellness consultations.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="health-card border-t-4 border-amber-gold">
+            <h4 class="font-bold text-lg mb-2">Sensor Calibration</h4>
+            <p class="text-xs text-gray-500 mb-6">Ensure your wearable devices are perfectly synced with the FallVision cloud.</p>
+            <button class="w-full bg-gray-50 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-amber-50">Start Sync</button>
+        </div>
+
+        <div class="health-card border-t-4 border-black">
+            <h4 class="font-bold text-lg mb-2">Expert Consultation</h4>
+            <p class="text-xs text-gray-500 mb-6">Book a 15-minute review with a mobility specialist to interpret your brain-gait correlation.</p>
+            <button class="w-full bg-black text-white py-3 rounded-xl text-xs font-black uppercase tracking-widest">Schedule Now</button>
+        </div>
+
+        <div class="health-card border-t-4 border-green-500">
+            <h4 class="font-bold text-lg mb-2">Hardware Support</h4>
+            <p class="text-xs text-gray-500 mb-6">Live chat with our technical engineering team for troubleshooting sensor latency.</p>
+            <button class="w-full bg-green-50 text-green-700 py-3 rounded-xl text-xs font-black uppercase tracking-widest">Open Ticket</button>
+        </div>
+    </div>
+
+    <div class="mt-12 health-card bg-white">
+        <h4 class="text-xl font-bold mb-6">Submit a Support Request</h4>
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="text" placeholder="Subject" class="p-4 rounded-xl bg-gray-50 text-sm outline-none border-2 border-transparent focus:border-amber-100">
+            <select class="p-4 rounded-xl bg-gray-50 text-sm outline-none border-2 border-transparent focus:border-amber-100 font-bold">
+                <option>Technical Issue</option>
+                <option>Data Interpretation</option>
+                <option>Account Privacy</option>
+            </select>
+            <textarea placeholder="Describe your request..." class="md:col-span-2 p-4 h-32 rounded-xl bg-gray-50 text-sm outline-none border-2 border-transparent focus:border-amber-100"></textarea>
+            <button type="submit" class="btn-premium md:w-max px-12">Submit Request</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

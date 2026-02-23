@@ -1,0 +1,49 @@
+{% include 'base.html' %}
+
+<div class="content">
+
+<h2>Limb Movement Detection</h2>
+<p style="color:gray;">Simulated real-time joint angle monitoring</p>
+
+<div class="kpi-grid">
+
+    <div class="kpi-card">
+        <h4>Right Arm Angle</h4>
+        <div class="kpi-value kpi-warning" id="ra">90°</div>
+    </div>
+
+    <div class="kpi-card">
+        <h4>Left Arm Angle</h4>
+        <div class="kpi-value kpi-warning" id="la">85°</div>
+    </div>
+
+    <div class="kpi-card">
+        <h4>Right Leg Angle</h4>
+        <div class="kpi-value kpi-success" id="rl">70°</div>
+    </div>
+
+    <div class="kpi-card">
+        <h4>Left Leg Angle</h4>
+        <div class="kpi-value kpi-success" id="ll">75°</div>
+    </div>
+
+</div>
+
+<div class="insight-box">
+Strong symmetry between bilateral limb angles indicates good neuromuscular coordination.
+Significant deviation beyond 20° may increase instability risk.
+</div>
+
+</div>
+
+<script>
+function randomAngle(){
+    return Math.floor(Math.random()*120)+30;
+}
+setInterval(()=>{
+    document.getElementById("ra").innerText = randomAngle()+"°";
+    document.getElementById("la").innerText = randomAngle()+"°";
+    document.getElementById("rl").innerText = randomAngle()+"°";
+    document.getElementById("ll").innerText = randomAngle()+"°";
+}, 3000);
+</script>

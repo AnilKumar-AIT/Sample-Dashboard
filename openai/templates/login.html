@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body style="display:flex; justify-content:center; align-items:center; height:100vh;">
+
+<div class="card" style="width:350px;">
+    <h2>Login to FallVision</h2>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Username" required style="width:100%; padding:10px; margin:10px 0;">
+        <input type="password" name="password" placeholder="Password" required style="width:100%; padding:10px; margin:10px 0;">
+        <button class="btn-primary" style="width:100%;">Login</button>
+    </form>
+    <p style="margin-top:15px;">No account? <a href="/signup">Sign up</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl font-black mb-8">Mobility Archive</h2>
+    
+    <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-gray-50 text-[10px] uppercase font-black text-gray-400 tracking-widest">
+                    <th class="p-6">Timestamp</th>
+                    <th class="p-6">Mobility Score</th>
+                    <th class="p-6">Risk Level</th>
+                    <th class="p-6">Brain Sync</th>
+                    <th class="p-6">Details</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                {% for item in history %}
+                <tr class="hover:bg-amber-50/30 transition-colors">
+                    <td class="p-6 font-mono text-xs">{{ item.timestamp }}</td>
+                    <td class="p-6 font-bold">{{ item.mobility_score }}%</td>
+                    <td class="p-6">
+                        <span class="px-3 py-1 bg-green-100 text-green-700 text-[10px] font-black rounded-full uppercase">{{ item.fall_risk }}</span>
+                    </td>
+                    <td class="p-6 text-amber-gold font-bold">{{ item.correlation }}</td>
+                    <td class="p-6"><button class="text-xs font-bold text-gray-400 hover:text-black">View Snapshot</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

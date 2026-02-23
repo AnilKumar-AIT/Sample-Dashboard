@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block auth %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50 p-6">
+    <div class="bg-white w-full max-w-md p-10 rounded-[2.5rem] shadow-2xl border border-gray-100">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-black">Welcome to <span class="text-amber-gold">FallVision</span></h2>
+            <p class="text-gray-400 mt-2 text-sm">Log in to view your neural health metrics.</p>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="bg-red-50 text-red-500 text-xs p-4 rounded-xl mb-6 font-bold">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="space-y-4">
+                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-gray-50 border-none p-4 rounded-xl text-sm focus:ring-2 focus:ring-amber-200 outline-none">
+                <input type="password" name="password" placeholder="Password" required class="w-full bg-gray-50 border-none p-4 rounded-xl text-sm focus:ring-2 focus:ring-amber-200 outline-none">
+                <input type="text" name="name" placeholder="Full Name (for Signup)" class="w-full bg-gray-50 border-none p-4 rounded-xl text-sm focus:ring-2 focus:ring-amber-200 outline-none">
+            </div>
+            <div class="mt-8 grid grid-cols-2 gap-4">
+                <button name="login" type="submit" class="bg-black text-white p-4 rounded-xl font-bold text-sm hover:opacity-90">Login</button>
+                <button name="signup" type="submit" class="bg-amber-gold text-white p-4 rounded-xl font-bold text-sm hover:opacity-90">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

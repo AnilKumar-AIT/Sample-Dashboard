@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - FallVision{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2>Welcome Back</h2>
+            <div class="auth-toggle">
+                <button class="active">Login</button>
+                <button>Sign Up</button>
+            </div>
+        </div>
+        <form>
+            <div class="form-group">
+                <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Quick PIN (Optional)">
+            </div>
+            <div class="auth-actions">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-block">Login</a>
+                <button type="button" class="btn btn-outline btn-block text-dark">Sign Up</button>
+            </div>
+            <div class="auth-footer">
+                <a href="#">Forgot Password?</a>
+                <span>Or login with...</span>
+            </div>
+            <div class="secure-badge">
+                <i data-feather="shield"></i> Secure Encryption
+            </div>
+        </form>
+    </div>
+    <div class="auth-image">
+        <!-- Background image handled in CSS -->
+        <div class="auth-overlay">
+            <h1>Your Partner in Healthy Aging.<br>Rediscover Independence.</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}

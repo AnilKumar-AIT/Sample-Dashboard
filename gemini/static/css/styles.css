@@ -1,0 +1,142 @@
+/* FallVision Premium Style Sheet 
+    Theme: Clinical Gold & Minimalist Graphite
+*/
+
+:root {
+    --primary: #D97706;        /* Amber Gold */
+    --primary-light: #FEF3C7;
+    --primary-dark: #92400E;
+    --surface: #FFFFFF;
+    --background: #F8FAFC;
+    --text-main: #0F172A;
+    --text-muted: #64748B;
+    --success: #10B981;
+    --danger: #EF4444;
+    --radius-lg: 2rem;
+    --radius-md: 1rem;
+    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Base Refinements */
+body {
+    background-color: var(--background);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+}
+
+/* High-End Typography Styling */
+h1, h2, h3, h4 {
+    letter-spacing: -0.03em;
+    font-weight: 800;
+}
+
+/* Premium Card Design (Whoop/Apple Health Style) */
+.health-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-soft);
+}
+
+.health-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary-light);
+}
+
+/* Glassmorphism for the Top Navbar */
+.glass-nav {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Sidebar Custom Indicator */
+.sidebar-link {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.sidebar-link.active::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 4px;
+    background: var(--primary);
+    border-radius: 4px 0 0 4px;
+}
+
+/* Data Gauge Animation */
+.gauge-bar {
+    transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Premium Button Styling */
+.btn-premium {
+    background: var(--text-main);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-premium:hover {
+    background: var(--primary);
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(217, 119, 6, 0.3);
+}
+
+/* Simulated "Live" Pulse */
+.status-pulse {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+	70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+	100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Charts Tooltip Customization */
+.chart-container {
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.02));
+}
+
+/* Entrance Animation for Dashboard Items */
+.stagger-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Checkboxes/Inputs */
+input[type="text"], input[type="email"], input[type="password"] {
+    border: 2px solid transparent;
+    background: #F1F5F9;
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    background: white;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 4px var(--primary-light);
+}

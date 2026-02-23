@@ -1,0 +1,409 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - FallVision{% endblock %}
+
+{% block content %}
+<div class="dashboard-layout">
+    <aside class="sidebar">
+        <div class="logo-area">
+            <i data-feather="activity"></i> FallVision
+        </div>
+        <nav class="side-nav">
+            <a href="{{ url_for('dashboard', view='detection') }}"
+                class="{% if view == 'detection' %}active{% endif %}">Detection</a>
+            <a href="{{ url_for('dashboard', view='records') }}"
+                class="{% if view == 'records' %}active{% endif %}">Past Records</a>
+            <a href="{{ url_for('dashboard', view='trends') }}"
+                class="{% if view == 'trends' %}active{% endif %}">Trends</a>
+            <a href="{{ url_for('dashboard', view='emergency') }}"
+                class="{% if view == 'emergency' %}active{% endif %}">Emergency Hub</a>
+        </nav>
+        <div class="user-profile">
+            <div class="avatar-small"></div>
+            <div class="user-info">
+                <span>Dr Eleanor Vance</span>
+                <small>Settings</small>
+            </div>
+            <i data-feather="settings"></i>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="nav-controls">
+                <a href="{{ url_for('dashboard', view='home') }}"
+                    class="btn-nav {% if view == 'home' %}active{% endif %}">Home</a>
+                <a href="{{ url_for('dashboard', view='support') }}"
+                    class="btn-nav {% if view == 'support' %}active{% endif %}">Support</a>
+                <a href="{{ url_for('dashboard', view='faq') }}"
+                    class="btn-nav {% if view == 'faq' %}active{% endif %}">FAQ</a>
+                <a href="{{ url_for('dashboard', view='resources') }}"
+                    class="btn-nav {% if view == 'resources' %}active{% endif %}">Resources</a>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            {% if view == 'home' %}
+            <div class="home-view">
+                <h1 class="page-title">Brain Activity & Movement</h1>
+
+                <div class="diagram-container">
+                    <div class="diagram-placeholder">
+                        <div class="brain-icon">
+                            <i data-feather="monitor"></i> <!-- Placeholder for Brain -->
+                            <span>Brain Signal</span>
+                        </div>
+                        <div class="flow-line"></div>
+                        <div class="arm-icon">
+                            <i data-feather="activity"></i> <!-- Placeholder for Arm -->
+                            <span>Muscle Command</span>
+                        </div>
+                        <div class="flow-line"></div>
+                        <div class="limb-icon">
+                            <i data-feather="user"></i> <!-- Placeholder for Limb -->
+                            <span>Limb Movement</span>
+                        </div>
+                    </div>
+                    <p class="diagram-note">Healthy Brain Function = Fluid Movement, Balance & Agility</p>
+                </div>
+            </div>
+            {% elif view == 'detection' %}
+            <h2>Live Movement Detection</h2>
+
+            <div class="detection-grid">
+                <div class="video-feed">
+                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                        alt="Live Feed Placeholder">
+                    <div class="angle-overlay">
+                        <div class="angle-display">
+                            145° <small>Within Average Range</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-panel">
+                    <div class="stat-card info-highlight" style="border-left: 4px solid var(--primary-color);">
+                        <h3 style="margin-top:0;">Brain Activity & Movement</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">Real-time correlation between motor
+                            cortex signals and limb angular velocity. Monitoring for irregularities indicating pre-fall
+                            conditions.</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Movement Quality</h3>
+                        <div class="gauge-placeholder">
+                            <span class="score">92%</span>
+                        </div>
+                        <p>Right Leg Angle (Last 30 Min)</p>
+                    </div>
+
+                    <div class="stat-card graph-card">
+                        <!-- Simple CSS Graph placeholder -->
+                        <div class="simple-graph"></div>
+                        <div class="graph-labels">
+                            <span>0</span><span>30</span><span>70</span><span>90</span><span>130</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card settings-card">
+                        <h3>Threshold Settings <i data-feather="alert-triangle"></i></h3>
+                        <div class="setting-row">
+                            <span>Min. Angle Threshold 130°</span>
+                            <div class="toggle-switch on"></div>
+                        </div>
+                        <div class="setting-row">
+                            <span>Audio Alert (Guardian)</span>
+                            <div class="toggle-switch on"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% elif view == 'records' %}
+            <h2>Past Records & Event History</h2>
+
+            <div class="records-controls">
+                <div class="filter-tabs">
+                    <button class="active">All Cases</button>
+                    <button>High-Risk Alerts</button>
+                    <button>Successful Interventions</button>
+                </div>
+                <div class="date-search">
+                    <input type="text" placeholder="Date Search">
+                </div>
+            </div>
+
+            <div class="records-table-container">
+                <table class="records-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Limb Analysed</th>
+                            <th>Threshold Met</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 Time</td>
+                            <td class="text-success">Normal Range</td>
+                            <td>Angle (Avg).</td>
+                            <td class="text-danger">Threshold Alert</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2 UIM</td>
+                            <td class="text-success">Normal Range</td>
+                            <td>942 UB</td>
+                            <td class="text-success">Threshold Alert</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3 201188A0</td>
+                            <td class="text-success">Normal Range</td>
+                            <td>243 UB</td>
+                            <td class="text-danger">Threshold Alert</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>4 DAC</td>
+                            <td class="text-success">Normal Range</td>
+                            <td>943 UB</td>
+                            <td class="text-danger">Threshold Alert</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="records-footer">
+                <div class="info-card">
+                    <h3>High-Risk Events</h3>
+                    <p>Patient's Right Knee Angle decreased by 20% below baseline.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Guardian Actions</h3>
+                    <p>Oct 25. Guardian John D. called patient. Status resolved.</p>
+                </div>
+            </div>
+            {% elif view == 'trends' %}
+            <div class="trends-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>Trends Analysis</h2>
+                <div class="time-selector">
+                    <button class="btn btn-outline" style="color: var(--text-color); border-color: #ddd;">Week</button>
+                    <button class="btn btn-primary">Month</button>
+                    <button class="btn btn-outline" style="color: var(--text-color); border-color: #ddd;">Year</button>
+                </div>
+            </div>
+
+            <div class="trends-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                <div class="stat-card" style="grid-column: 1 / -1;">
+                    <h3>Activity & Anomaly detection</h3>
+                    <canvas id="mainTrendChart" style="width: 100%; height: 300px;"></canvas>
+                </div>
+                <div class="stat-card">
+                    <h3>Average Mobility Score</h3>
+                    <div class="big-stat" style="font-size: 3rem; font-weight: 700; color: var(--primary-color);">87/100
+                    </div>
+                    <p style="color: var(--text-light);">+5% from last month</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Fall Risk Index</h3>
+                    <div class="big-stat" style="font-size: 3rem; font-weight: 700; color: #f1c40f;">Low</div>
+                    <p style="color: var(--text-light);">Stable over 30 days</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Pre-Fall Indicators</h3>
+                    <div class="big-stat" style="font-size: 3rem; font-weight: 700; color: var(--primary-color);">2
+                    </div>
+                    <p style="color: var(--text-light);">Incidents flagged for review</p>
+                </div>
+            </div>
+
+            <!-- Chart.js CDN -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                // Simple Chart.js initialization
+                const ctx = document.getElementById('mainTrendChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                        datasets: [{
+                            label: 'Mobility Score',
+                            data: [82, 85, 84, 87],
+                            borderColor: '#2A9D8F',
+                            tension: 0.4,
+                            fill: true,
+                            backgroundColor: 'rgba(42, 157, 143, 0.1)'
+                        }, {
+                            label: 'Fall Risk Threshold',
+                            data: [40, 40, 40, 40],
+                            borderColor: '#e74c3c',
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            borderWidth: 1,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            </script>
+
+            {% elif view == 'emergency' %}
+            <h2>Emergency Hub</h2>
+
+            <div class="emergency-dashboard" style="display: flex; gap: 30px; flex-wrap: wrap;">
+                <!-- Status Panel -->
+                <div class="stat-card"
+                    style="flex: 1; min-width: 300px; text-align: center; border-top: 5px solid #2ecc71;">
+                    <h3>System Status</h3>
+                    <div class="status-indicator"
+                        style="width: 20px; height: 20px; background: #2ecc71; border-radius: 50%; margin: 20px auto; box-shadow: 0 0 10px #2ecc71;">
+                    </div>
+                    <p style="font-size: 1.2rem; font-weight: 600;">All Systems Normal</p>
+                    <p style="color: var(--text-light);">Monitoring Active • Battery 98%</p>
+                </div>
+
+                <!-- Action Panel -->
+                <div class="stat-card" style="flex: 1; min-width: 300px; border-top: 5px solid #e74c3c;">
+                    <h3 style="color: #e74c3c;">Emergency Actions</h3>
+                    <div class="action-buttons"
+                        style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+                        <button class="btn"
+                            style="background-color: #e74c3c; color: white; padding: 15px; font-size: 1.1rem;">
+                            <i data-feather="bell"></i> Trigger SOS Alert
+                        </button>
+                        <button class="btn btn-outline" style="border-color: #e74c3c; color: #e74c3c; padding: 15px;">
+                            <i data-feather="phone"></i> Call Emergency Services (911)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contacts List -->
+                <div class="card-full" style="width: 100%;">
+                    <h3>Emergency Contacts</h3>
+                    <div class="contact-list"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <div class="contact-card stat-card" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="avatar"
+                                style="width: 50px; height: 50px; margin: 0; background-image: url('https://i.pravatar.cc/150?img=12');">
+                            </div>
+                            <div>
+                                <h4 style="margin: 0;">John Doe</h4>
+                                <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">Primary Guardian</p>
+                                <a href="#" style="color: var(--primary-color); font-size: 0.8rem;">+1 234 567 890</a>
+                            </div>
+                        </div>
+                        <div class="contact-card stat-card" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="avatar"
+                                style="width: 50px; height: 50px; margin: 0; background-image: url('https://i.pravatar.cc/150?img=5');">
+                            </div>
+                            <div>
+                                <h4 style="margin: 0;">Dr. Sarah Smith</h4>
+                                <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">Cardiologist</p>
+                                <a href="#" style="color: var(--primary-color); font-size: 0.8rem;">+1 987 654 321</a>
+                            </div>
+                        </div>
+                        <div class="contact-card stat-card"
+                            style="display: flex; align-items: justify-content: center; border: 2px dashed #ddd; cursor: pointer;">
+                            <div style="text-align: center; width: 100%;">
+                                <i data-feather="plus" style="color: #aaa;"></i>
+                                <p style="margin: 5px 0 0; color: #aaa;">Add Contact</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% elif view == 'support' %}
+            <h2>Support Center</h2>
+            <div class="support-container" style="display: flex; gap: 20px;">
+                <div class="chat-interface"
+                    style="flex: 2; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <h3>Live Chat Support</h3>
+                    <div class="chat-window"
+                        style="height: 300px; background: #f9f9f9; border-radius: 4px; padding: 15px; margin-bottom: 15px; overflow-y: auto;">
+                        <p style="color: #666; font-size: 0.9rem;"><strong>System:</strong> Welcome to FallVision
+                            Support. How can we help you today?</p>
+                    </div>
+                    <div class="chat-input" style="display: flex; gap: 10px;">
+                        <input type="text" placeholder="Type your message..."
+                            style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        <button class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+                <div class="contact-info" style="flex: 1;">
+                    <div class="stat-card">
+                        <h3>Contact Us</h3>
+                        <p>Email: support@fallvision.com</p>
+                        <p>Phone: +1-800-FALL-CARE</p>
+                    </div>
+                </div>
+            </div>
+
+            {% elif view == 'faq' %}
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list" style="max-width: 800px;">
+                <div class="faq-item stat-card" style="margin-bottom: 15px; padding: 20px; text-align: left;">
+                    <h3 style="margin-top: 0; color: var(--primary-color);">How does the detection work?</h3>
+                    <p>FallVision uses AI to analyze movement patterns from the camera feed relative to established
+                        baselines to detect falls or irregularities.</p>
+                </div>
+                <div class="faq-item stat-card" style="margin-bottom: 15px; padding: 20px; text-align: left;">
+                    <h3 style="margin-top: 0; color: var(--primary-color);">is my data private?</h3>
+                    <p>Yes, all video feeds are processed locally and encrypted. Only alerts are sent to guardians.</p>
+                </div>
+                <div class="faq-item stat-card" style="margin-bottom: 15px; padding: 20px; text-align: left;">
+                    <h3 style="margin-top: 0; color: var(--primary-color);">How do I reset my sensor?</h3>
+                    <p>Go to Settings > Devices > Reset Sensor, or restart the application.</p>
+                </div>
+            </div>
+
+            {% elif view == 'resources' %}
+            <h2>Resources & Health</h2>
+            <div class="resources-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="stat-card" style="text-align: left;">
+                    <h3>About FallVision</h3>
+                    <p>FallVision is dedicated to ensuring safety and independence for seniors through advanced
+                        technology.</p>
+                </div>
+                <div class="stat-card" style="text-align: left;">
+                    <h3>Brain Activity & Movement</h3>
+                    <p>Maintaining healthy brain activity is crucial for motor control. Regular cognitive exercises can
+                        improve balance and reaction times.</p>
+                    <ul style="padding-left: 20px; color: var(--text-light); margin-top: 10px;">
+                        <li>Complex motor tasks</li>
+                        <li>Coordination drills</li>
+                        <li>Meditation</li>
+                    </ul>
+                </div>
+                <div class="stat-card" style="text-align: left;">
+                    <h3>Suggested Diet for Brain Health</h3>
+                    <ul style="padding-left: 20px; color: var(--text-light);">
+                        <li><strong>Omega-3 Fatty Acids:</strong> Fish, walnuts, flaxseeds.</li>
+                        <li><strong>Antioxidants:</strong> Berries, dark chocolate.</li>
+                        <li><strong>Vitamin E:</strong> Nuts, seeds, spinach.</li>
+                    </ul>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+    </main>
+</div>
+{% endblock %}

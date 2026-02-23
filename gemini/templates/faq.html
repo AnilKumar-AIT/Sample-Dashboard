@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto stagger-fade-in">
+    <div class="text-center mb-16">
+        <h2 class="text-4xl font-black text-gray-900">Frequently Asked Questions</h2>
+        <p class="text-gray-500 mt-4">Everything you need to know about the FallVision ecosystem.</p>
+    </div>
+
+    <div class="space-y-4">
+        <details class="group health-card p-0 overflow-hidden" open>
+            <summary class="flex justify-between items-center p-6 cursor-pointer list-none bg-white">
+                <span class="font-bold text-gray-800">How accurate is the limb angle detection?</span>
+                <span class="transition group-open:rotate-180">▼</span>
+            </summary>
+            <div class="px-6 pb-6 text-sm text-gray-500 leading-relaxed border-t border-gray-50 pt-4">
+                FallVision utilizes high-frequency IoT sensor data processed through our proprietary neural-link algorithm. Our current baseline accuracy for limb propulsion angles is within 1.2 degrees of clinical-grade lab equipment.
+            </div>
+        </details>
+
+        <details class="group health-card p-0 overflow-hidden">
+            <summary class="flex justify-between items-center p-6 cursor-pointer list-none bg-white">
+                <span class="font-bold text-gray-800">Can my caregiver see my data?</span>
+                <span class="transition group-open:rotate-180">▼</span>
+            </summary>
+            <div class="px-6 pb-6 text-sm text-gray-500 leading-relaxed border-t border-gray-50 pt-4">
+                Yes, through the "Emergency Hub," you can authorize specific contacts. They will receive automated alerts if the system detects a significant "Stability Drift" or a potential fall event.
+            </div>
+        </details>
+
+        <details class="group health-card p-0 overflow-hidden">
+            <summary class="flex justify-between items-center p-6 cursor-pointer list-none bg-white">
+                <span class="font-bold text-gray-800">Is my neuro-data secure?</span>
+                <span class="transition group-open:rotate-180">▼</span>
+            </summary>
+            <div class="px-6 pb-6 text-sm text-gray-500 leading-relaxed border-t border-gray-50 pt-4">
+                We use AES-256 encryption for all data transmission and PBKDF2 hashing for authentication. Your gait signature is anonymized before clinical analysis.
+            </div>
+        </details>
+    </div>
+</div>
+{% endblock %}
